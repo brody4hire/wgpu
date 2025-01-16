@@ -1,5 +1,6 @@
 //! The [`HandleSet`] type and associated definitions.
 
+use crate::alias::*;
 use crate::arena::{Arena, Handle, UniqueArena};
 
 /// A set of `Handle<T>` values.

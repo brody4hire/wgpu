@@ -1,5 +1,7 @@
 //! Code shared between the WGSL front and back ends.
 
+use crate::alias::*;
+
 use std::fmt::{self, Display, Formatter};
 
 use crate::diagnostic_filter::{

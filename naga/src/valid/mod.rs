@@ -11,6 +11,7 @@ mod interface;
 mod r#type;
 
 use crate::{
+    alias::*,
     arena::{Handle, HandleSet},
     proc::{ExpressionKindTracker, LayoutError, Layouter, TypeResolution},
     FastHashSet,

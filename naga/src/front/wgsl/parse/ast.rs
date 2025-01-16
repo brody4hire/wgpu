@@ -1,3 +1,4 @@
+use crate::alias::*;
 use crate::diagnostic_filter::DiagnosticFilterNode;
 use crate::front::wgsl::parse::directive::enable_extension::EnableExtensions;
 use crate::front::wgsl::parse::number::Number;

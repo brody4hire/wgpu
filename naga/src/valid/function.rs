@@ -1,3 +1,4 @@
+use crate::alias::*;
 use crate::arena::{Arena, UniqueArena};
 use crate::arena::{Handle, HandleSet};
 

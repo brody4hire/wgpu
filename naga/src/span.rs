@@ -1,3 +1,4 @@
+use crate::alias::*;
 use crate::{Arena, Handle, UniqueArena};
 use std::{error::Error, fmt, ops::Range};
 

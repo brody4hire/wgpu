@@ -1,4 +1,5 @@
 use super::{compose::validate_compose, FunctionInfo, ModuleInfo, ShaderStages, TypeFlags};
+use crate::alias::*;
 use crate::arena::UniqueArena;
 
 use crate::{

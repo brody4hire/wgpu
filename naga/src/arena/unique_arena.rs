@@ -1,5 +1,6 @@
 //! The [`UniqueArena`] type and supporting definitions.
 
+use crate::alias::*;
 use crate::{FastIndexSet, Span};
 
 use super::handle::{BadHandle, Handle, Index};

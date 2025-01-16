@@ -32,6 +32,7 @@ pub(crate) use handlevec::HandleVec;
 pub use range::{BadRangeError, Range};
 pub use unique_arena::UniqueArena;
 
+use crate::alias::*;
 use crate::Span;
 
 use handle::Index;

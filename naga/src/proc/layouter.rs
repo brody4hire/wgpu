@@ -1,3 +1,4 @@
+use crate::alias::*;
 use crate::arena::{Handle, HandleVec};
 use std::{fmt::Display, num::NonZeroU32, ops};
 

@@ -5,6 +5,8 @@
 //!
 //! [`Arena`]: super::Arena
 
+use crate::alias::*;
+
 use super::{
     handle::{Handle, Index},
     Arena,

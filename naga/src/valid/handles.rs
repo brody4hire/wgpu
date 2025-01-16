@@ -1,6 +1,7 @@
 //! Implementation of `Validator::validate_module_handles`.
 
 use crate::{
+    alias::*,
     arena::{BadHandle, BadRangeError},
     diagnostic_filter::DiagnosticFilterNode,
     Handle,

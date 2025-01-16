@@ -2,6 +2,7 @@
 Type generators.
 */
 
+use crate::alias::*;
 use crate::{arena::Handle, span::Span};
 
 impl crate::Module {

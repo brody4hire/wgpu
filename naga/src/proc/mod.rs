@@ -2,6 +2,8 @@
 [`Module`](super::Module) processing functionality.
 */
 
+use crate::alias::*;
+
 mod constant_evaluator;
 mod emitter;
 pub mod index;

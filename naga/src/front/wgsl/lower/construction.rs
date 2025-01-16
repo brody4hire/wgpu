@@ -1,5 +1,6 @@
 use std::num::NonZeroU32;
 
+use crate::alias::*;
 use crate::front::wgsl::parse::ast;
 use crate::{Handle, Span};
 

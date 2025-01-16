@@ -15,6 +15,7 @@ pub mod spv;
 pub mod wgsl;
 
 use crate::{
+    alias::*,
     arena::{Arena, Handle, HandleVec, UniqueArena},
     proc::{ResolveContext, ResolveError, TypeResolution},
     FastHashMap,

@@ -2,6 +2,8 @@
 
 use super::handle::Handle;
 
+use crate::alias::*;
+
 use std::marker::PhantomData;
 use std::ops;
 

@@ -1,4 +1,5 @@
 use super::Capabilities;
+use crate::alias::*;
 use crate::{arena::Handle, proc::Alignment};
 
 bitflags::bitflags! {

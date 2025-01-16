@@ -1,3 +1,4 @@
+use crate::alias::*;
 use crate::{arena::Handle, FastHashMap, FastHashSet};
 use std::borrow::Cow;
 use std::hash::{Hash, Hasher};

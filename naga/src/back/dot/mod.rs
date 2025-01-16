@@ -8,6 +8,7 @@ of IR inspection and debugging.
 */
 
 use crate::{
+    alias::*,
     arena::Handle,
     valid::{FunctionInfo, ModuleInfo},
 };

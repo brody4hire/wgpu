@@ -1,3 +1,4 @@
+use crate::alias::*;
 use crate::arena::{Arena, Handle, UniqueArena};
 
 use thiserror::Error;

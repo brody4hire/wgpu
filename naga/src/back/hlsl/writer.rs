@@ -7,6 +7,7 @@ use super::{
     BackendResult, Error, FragmentEntryPoint, Options,
 };
 use crate::{
+    alias::*,
     back::{self, Baked},
     proc::{self, index, ExpressionKindTracker, NameKey},
     valid, Handle, Module, RayQueryFunction, Scalar, ScalarKind, ShaderStage, TypeInner,

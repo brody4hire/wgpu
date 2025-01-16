@@ -2176,6 +2176,7 @@ dependencies = [
  "codespan-reporting",
  "diff",
  "env_logger",
+ "hashbrown",
  "hexf-parse",
  "hlsl-snapshots",
  "indexmap",

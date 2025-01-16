@@ -1,5 +1,6 @@
 use std::num::NonZeroU32;
 
+use crate::alias::*;
 use crate::front::wgsl::error::{Error, ExpectedToken, InvalidAssignmentType};
 use crate::front::wgsl::index::Index;
 use crate::front::wgsl::parse::number::Number;

@@ -1,5 +1,7 @@
 //! [`DiagnosticFilter`]s and supporting functionality.
 
+use crate::alias::*;
+
 #[cfg(feature = "wgsl-in")]
 use crate::Span;
 use crate::{Arena, Handle};

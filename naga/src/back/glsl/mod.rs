@@ -46,6 +46,7 @@ to output a [`Module`](crate::Module) into glsl
 pub use features::Features;
 
 use crate::{
+    alias::*,
     back::{self, Baked},
     proc::{self, ExpressionKindTracker, NameKey},
     valid, Handle, ShaderStage, TypeInner,

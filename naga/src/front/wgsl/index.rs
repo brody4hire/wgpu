@@ -1,4 +1,5 @@
 use super::Error;
+use crate::alias::*;
 use crate::front::wgsl::parse::ast;
 use crate::{FastHashMap, Handle, Span};
 

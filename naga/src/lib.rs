@@ -249,6 +249,7 @@ An override expression can be evaluated at pipeline creation time.
         clippy::todo
     )
 )]
+#![no_std]
 
 mod arena;
 pub mod back;
@@ -2425,3 +2426,41 @@ pub struct Module {
     /// validation.
     pub diagnostic_filter_leaf: Option<Handle<DiagnosticFilterNode>>,
 }
+
+// XXX TBD CLEANUP NEEDED BELOW - ???
+// XXX TBD SHOULD THIS BE A SEPARATE MODULE - ???
+pub(crate) mod alias {
+    pub(crate) use std::prelude::v1::*;
+    pub(crate) mod std {
+        pub(crate) mod prelude {
+            pub(crate) mod v1 {
+                pub(crate) use super::super::{
+                    alloc::format, borrow::ToOwned, boxed::Box, string::String, string::ToString,
+                    vec, vec::Vec,
+                };
+                #[cfg(feature = "std")]
+                pub(crate) use super::super::thread_local;
+            }
+        }
+        // XXX TODO REPLACE THIS CRATE ALIAS WITH UPDATES FROM OTHER PR
+        pub(crate) use hashbrown as collections;
+        pub(crate) use core::{
+            any, convert, error, fmt, hash, iter, marker, mem, num, ops, slice, cmp,
+        };
+        extern crate alloc;
+        pub(crate) use alloc::{boxed, string, vec};
+        pub(crate) mod borrow {
+            pub(crate) use super::alloc::borrow::*;
+        }
+        pub(crate) mod sync {
+            pub(crate) use super::alloc::sync::*;
+            pub(crate) use core::sync::*;
+        }
+        #[cfg(feature = "std")]
+        extern crate std;
+        #[cfg(feature = "std")]
+        pub(crate) use std::{backtrace, env, fs, io, path, process, thread, thread_local};
+    }
+}
+
+use alias::*;
