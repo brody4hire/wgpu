@@ -1,3 +1,5 @@
+use crate::alias::*;
+
 use super::{Instruction, LogicalLayout, PhysicalLayout};
 use spirv::{Op, Word, MAGIC_NUMBER};
 use std::iter;

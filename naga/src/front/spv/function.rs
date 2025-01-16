@@ -1,4 +1,5 @@
 use crate::{
+    alias::*,
     arena::{Arena, Handle},
     front::spv::{BlockContext, BodyIndex},
 };

@@ -1,5 +1,6 @@
 use super::PipelineConstants;
 use crate::{
+    alias::*,
     arena::HandleVec,
     proc::{ConstantEvaluator, ConstantEvaluatorError, Emitter},
     valid::{Capabilities, ModuleInfo, ValidationError, ValidationFlags, Validator},

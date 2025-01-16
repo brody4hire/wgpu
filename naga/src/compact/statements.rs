@@ -1,5 +1,6 @@
 use super::functions::FunctionTracer;
 use super::FunctionMap;
+use crate::alias::*;
 use crate::arena::Handle;
 
 impl FunctionTracer<'_> {

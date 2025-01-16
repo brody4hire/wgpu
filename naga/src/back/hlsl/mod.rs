@@ -105,6 +105,8 @@ mod ray;
 mod storage;
 mod writer;
 
+use crate::alias::*;
+
 use std::fmt::Error as FmtError;
 use thiserror::Error;
 

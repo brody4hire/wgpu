@@ -8,6 +8,7 @@ use super::{
     Block, BlockContext, Error, IdGenerator, Instruction, Word,
 };
 use crate::{
+    alias::*,
     arena::Handle,
     proc::{index::GuardedIndex, BoundsCheckPolicy},
 };

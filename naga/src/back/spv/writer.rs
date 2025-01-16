@@ -7,6 +7,7 @@ use super::{
     PipelineOptions, ResultMember, Writer, WriterFlags, BITS_PER_BYTE,
 };
 use crate::{
+    alias::*,
     arena::{Handle, HandleVec, UniqueArena},
     back::spv::BindingInfo,
     proc::{Alignment, TypeResolution},

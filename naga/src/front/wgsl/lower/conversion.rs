@@ -1,5 +1,6 @@
 //! WGSL's automatic conversions for abstract types.
 
+use crate::alias::*;
 use crate::front::wgsl::error::{
     AutoConversionError, AutoConversionLeafScalarError, ConcretizationFailedError,
 };

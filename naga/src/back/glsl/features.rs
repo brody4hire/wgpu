@@ -1,5 +1,6 @@
 use super::{BackendResult, Error, Version, Writer};
 use crate::{
+    alias::*,
     back::glsl::{Options, WriterFlags},
     AddressSpace, Binding, Expression, Handle, ImageClass, ImageDimension, Interpolation,
     SampleLevel, Sampling, Scalar, ScalarKind, ShaderStage, StorageFormat, Type, TypeInner,

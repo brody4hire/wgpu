@@ -1,4 +1,5 @@
 use super::ModuleState;
+use crate::alias::*;
 use crate::{arena::Handle, front::atomic_upgrade};
 use codespan_reporting::diagnostic::Diagnostic;
 use codespan_reporting::files::SimpleFile;

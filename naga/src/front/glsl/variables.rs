@@ -4,6 +4,7 @@ use super::{
     error::{Error, ErrorKind},
     Frontend, Result, Span,
 };
+use crate::alias::*;
 use crate::{
     AddressSpace, Binding, BuiltIn, Constant, Expression, GlobalVariable, Handle, Interpolation,
     LocalVariable, ResourceBinding, Scalar, ScalarKind, ShaderStage, SwizzleComponent, Type,

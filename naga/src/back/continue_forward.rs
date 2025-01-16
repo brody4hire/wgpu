@@ -59,6 +59,7 @@
 //! [`Switch`]: crate::Statement::Switch
 //! [`SwitchCase`]: crate::SwitchCase
 
+use crate::alias::*;
 use crate::proc::Namer;
 use std::rc::Rc;
 

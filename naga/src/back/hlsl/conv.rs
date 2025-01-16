@@ -1,5 +1,6 @@
 use std::borrow::Cow;
 
+use crate::alias::*;
 use crate::proc::Alignment;
 
 use super::Error;

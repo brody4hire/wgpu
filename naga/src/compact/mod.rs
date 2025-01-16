@@ -4,6 +4,7 @@ mod handle_set_map;
 mod statements;
 mod types;
 
+use crate::alias::*;
 use crate::arena::HandleSet;
 use crate::{arena, compact::functions::FunctionTracer};
 use handle_set_map::HandleMap;

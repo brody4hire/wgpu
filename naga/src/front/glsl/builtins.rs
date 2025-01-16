@@ -6,6 +6,7 @@ use super::{
     context::Context,
     Error, ErrorKind, Frontend, Result,
 };
+use crate::alias::*;
 use crate::{
     BinaryOperator, DerivativeAxis as Axis, DerivativeControl as Ctrl, Expression, Handle,
     ImageClass, ImageDimension as Dim, ImageQuery, MathFunction, Module, RelationalFunction,

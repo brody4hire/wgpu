@@ -1,5 +1,6 @@
 //! Producing the WGSL forms of types, for use in error messages.
 
+use crate::alias::*;
 use crate::proc::GlobalCtx;
 use crate::Handle;
 

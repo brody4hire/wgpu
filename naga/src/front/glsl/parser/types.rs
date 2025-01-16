@@ -1,6 +1,7 @@
 use std::num::NonZeroU32;
 
 use crate::{
+    alias::*,
     front::glsl::{
         ast::{QualifierKey, QualifierValue, StorageQualifier, StructLayout, TypeQualifiers},
         context::Context,

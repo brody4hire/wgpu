@@ -7,6 +7,7 @@ use super::{
     types::{scalar_components, type_power},
     Frontend, Result,
 };
+use crate::alias::*;
 use crate::{
     front::Typifier, proc::Emitter, AddressSpace, Arena, BinaryOperator, Block, Expression,
     FastHashMap, FunctionArgument, Handle, Literal, LocalVariable, RelationalFunction, Scalar,

@@ -31,6 +31,7 @@ holding the result.
 
 */
 
+use crate::alias::*;
 use crate::{arena::Handle, proc::index, valid::ModuleInfo};
 use std::fmt::{Error as FmtError, Write};
 

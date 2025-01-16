@@ -1,4 +1,5 @@
 use crate::{
+    alias::*,
     arena::{Handle, UniqueArena},
     Scalar,
 };

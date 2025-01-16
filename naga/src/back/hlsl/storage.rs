@@ -57,6 +57,7 @@ correct type if necessary.
 
 use super::{super::FunctionCtx, BackendResult, Error};
 use crate::{
+    alias::*,
     proc::{Alignment, NameKey, TypeResolution},
     Handle,
 };

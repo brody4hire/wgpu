@@ -18,6 +18,7 @@ mod writer;
 
 pub use spirv::{Capability, SourceLanguage};
 
+use crate::alias::*;
 use crate::arena::{Handle, HandleVec};
 use crate::proc::{BoundsCheckPolicies, TypeResolution};
 

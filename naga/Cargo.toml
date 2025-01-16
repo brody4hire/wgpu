@@ -64,6 +64,10 @@ hlsl-out-if-target-windows = []
 
 compact = []
 
+# XXX XXX
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(cfg_xxx_arbitrary)'] }
+
 [dependencies]
 arbitrary = { version = "1.4", features = ["derive"], optional = true }
 arrayvec.workspace = true

@@ -1,4 +1,5 @@
 use super::{block::DebugInfoInner, helpers};
+use crate::alias::*;
 use spirv::{Op, Word};
 
 pub(super) enum Signedness {

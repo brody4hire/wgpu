@@ -1,5 +1,6 @@
 use super::{sampler as sm, Error, LocationMode, Options, PipelineOptions, TranslationInfo};
 use crate::{
+    alias::*,
     arena::{Handle, HandleSet},
     back::{self, Baked},
     proc::index,

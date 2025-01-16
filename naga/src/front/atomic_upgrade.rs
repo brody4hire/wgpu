@@ -32,6 +32,7 @@
 //! [`Store`]: crate::Statement::Store
 use std::sync::{atomic::AtomicUsize, Arc};
 
+use crate::alias::*;
 use crate::{GlobalVariable, Handle, Module, Type, TypeInner};
 
 #[derive(Clone, Debug, thiserror::Error)]

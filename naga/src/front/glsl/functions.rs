@@ -7,6 +7,7 @@ use super::{
     Frontend, Result,
 };
 use crate::{
+    alias::*,
     front::glsl::types::type_power, proc::ensure_block_returns, AddressSpace, Block, EntryPoint,
     Expression, Function, FunctionArgument, FunctionResult, Handle, Literal, LocalVariable, Scalar,
     ScalarKind, Span, Statement, StructMember, Type, TypeInner,

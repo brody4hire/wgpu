@@ -1,3 +1,4 @@
+use crate::alias::*;
 use crate::arena::{Arena, Handle, HandleSet, Range};
 
 type Index = crate::non_max_u32::NonMaxU32;

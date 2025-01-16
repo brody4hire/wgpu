@@ -31,6 +31,7 @@ use super::{
     writer::{EXTRACT_BITS_FUNCTION, INSERT_BITS_FUNCTION},
     BackendResult,
 };
+use crate::alias::*;
 use crate::{arena::Handle, proc::NameKey};
 use std::fmt::Write;
 

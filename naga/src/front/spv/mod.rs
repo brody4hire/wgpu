@@ -38,6 +38,7 @@ pub use error::Error;
 use function::*;
 
 use crate::{
+    alias::*,
     arena::{Arena, Handle, UniqueArena},
     proc::{Alignment, Layouter},
     FastHashMap, FastHashSet, FastIndexMap,

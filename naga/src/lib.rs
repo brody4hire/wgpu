@@ -249,7 +249,9 @@ An override expression can be evaluated at pipeline creation time.
         clippy::todo
     )
 )]
-#![no_std]
+// XXX XXX XXX
+// #![no_std]
+#![cfg_attr(not(feature = "std"), no_std)]
 
 mod arena;
 pub mod back;
@@ -2430,7 +2432,10 @@ pub struct Module {
 // XXX TBD CLEANUP NEEDED BELOW - ???
 // XXX TBD SHOULD THIS BE A SEPARATE MODULE - ???
 pub(crate) mod alias {
+    // XXX TBD ??? ???
+    #[cfg(not(feature = "std"))]
     pub(crate) use std::prelude::v1::*;
+    #[cfg(not(feature = "std"))]
     pub(crate) mod std {
         pub(crate) mod prelude {
             pub(crate) mod v1 {
@@ -2442,13 +2447,17 @@ pub(crate) mod alias {
                 pub(crate) use super::super::thread_local;
             }
         }
-        // XXX TODO REPLACE THIS CRATE ALIAS WITH UPDATES FROM OTHER PR
-        pub(crate) use hashbrown as collections;
+        // XXX TODO REPLACE CRATE ALIAS IN COLLECTIONS MOD ALIAS WITH UPDATES FROM OTHER PR
+        // pub(crate) use hashbrown as collections;
+        pub(crate) mod collections {
+            pub(crate) use super::alloc::collections::*;
+            pub(crate) use hashbrown::*;
+        }
         pub(crate) use core::{
-            any, convert, error, fmt, hash, iter, marker, mem, num, ops, slice, cmp,
+            any, convert, error, fmt, hash, iter, marker, mem, num, ops, slice, cmp,result,
         };
         extern crate alloc;
-        pub(crate) use alloc::{boxed, string, vec};
+        pub(crate) use alloc::{boxed, string, vec,rc,str};
         pub(crate) mod borrow {
             pub(crate) use super::alloc::borrow::*;
         }
@@ -2461,12 +2470,13 @@ pub(crate) mod alias {
         #[cfg(feature = "std")]
         pub(crate) use std::{backtrace, env, fs, io, path, process, thread, thread_local};
     }
-    // XXX TBD ??? ??? ???
-    #[cfg(feature = "arbitrary")]
-    pub(crate) use arbitrary;
-    // XXX TBD ??? ??? ???
-    #[cfg(feature = "arbitrary")]
-    pub(crate) use arbitrary::Arbitrary;
+    // // XXX TBD ??? ??? ???
+    // #[cfg(feature = "arbitrary")]
+    // pub(crate) use arbitrary;
+    // // XXX TBD ??? ??? ???
+    // #[cfg(feature = "arbitrary")]
+    // pub(crate) use arbitrary::Arbitrary;
 }
 
+#[cfg(not(feature = "std"))]
 use alias::*;

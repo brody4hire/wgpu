@@ -1,6 +1,7 @@
 use super::Error;
 use crate::back::wgsl::polyfill::InversePolyfill;
 use crate::{
+    alias::*,
     back::{self, Baked},
     proc::{self, ExpressionKindTracker, NameKey},
     valid, Handle, Module, ShaderStage, TypeInner,

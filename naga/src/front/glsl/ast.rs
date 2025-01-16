@@ -1,6 +1,7 @@
 use std::{borrow::Cow, fmt};
 
 use super::{builtins::MacroCall, Span};
+use crate::alias::*;
 use crate::{
     AddressSpace, BinaryOperator, Binding, Constant, Expression, Function, GlobalVariable, Handle,
     Interpolation, Literal, Sampling, StorageAccess, Type, UnaryOperator,

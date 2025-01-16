@@ -16,6 +16,7 @@ use super::{
     error::{Error, ErrorKind},
     Span,
 };
+use crate::alias::*;
 use crate::{proc::Alignment, Handle, Scalar, Type, TypeInner, UniqueArena};
 
 /// Struct with information needed for defining a struct member.

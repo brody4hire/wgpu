@@ -1,6 +1,7 @@
 pub use pp_rs::token::{Float, Integer, Location, Token as PPToken};
 
 use super::ast::Precision;
+use crate::alias::*;
 use crate::{Interpolation, Sampling, Span, Type};
 
 impl From<Location> for Span {

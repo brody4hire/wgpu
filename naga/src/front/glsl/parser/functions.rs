@@ -1,3 +1,4 @@
+use crate::alias::*;
 use crate::front::glsl::context::ExprPos;
 use crate::front::glsl::Span;
 use crate::Literal;

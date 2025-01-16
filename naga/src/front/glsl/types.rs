@@ -1,4 +1,5 @@
 use super::{context::Context, Error, ErrorKind, Result, Span};
+use crate::alias::*;
 use crate::{
     proc::ResolveContext, Expression, Handle, ImageClass, ImageDimension, Scalar, ScalarKind, Type,
     TypeInner, VectorSize,

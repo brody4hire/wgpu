@@ -57,6 +57,8 @@ pointer for the duration of its lifetime. To obtain the block for generating
 code in the selection's body, call the `Selection::block` method.
 */
 
+use crate::alias::*;
+
 use super::{Block, BlockContext, Instruction};
 use spirv::Word;
 

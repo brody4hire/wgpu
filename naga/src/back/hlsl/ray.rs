@@ -1,3 +1,4 @@
+use crate::alias::*;
 use crate::back::hlsl::BackendResult;
 use crate::{RayQueryIntersection, TypeInner};
 use std::fmt::Write;

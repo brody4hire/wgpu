@@ -1,3 +1,4 @@
+use crate::alias::*;
 use crate::{Handle, UniqueArena};
 use spirv::Word;
 

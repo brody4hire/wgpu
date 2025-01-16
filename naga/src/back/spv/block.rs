@@ -6,6 +6,7 @@ use super::{
     index::BoundsCheckResult, selection::Selection, Block, BlockContext, Dimension, Error,
     Instruction, LocalType, LookupType, NumericType, ResultMember, Writer, WriterFlags,
 };
+use crate::alias::*;
 use crate::{arena::Handle, proc::index::GuardedIndex, Statement};
 use spirv::Word;
 

@@ -16,6 +16,7 @@ pub use ast::{Precision, Profile};
 pub use error::{Error, ErrorKind, ExpectedToken, ParseErrors};
 pub use token::TokenValue;
 
+use crate::alias::*;
 use crate::{proc::Layouter, FastHashMap, FastHashSet, Handle, Module, ShaderStage, Span, Type};
 use ast::{EntryArg, FunctionDeclaration, GlobalLookup};
 use parser::ParsingContext;

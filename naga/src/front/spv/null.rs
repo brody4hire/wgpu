@@ -1,4 +1,5 @@
 use super::Error;
+use crate::alias::*;
 use crate::arena::{Arena, Handle};
 
 /// Create a default value for an output built-in.

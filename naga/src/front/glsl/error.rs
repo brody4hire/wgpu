@@ -1,4 +1,5 @@
 use super::token::TokenValue;
+use crate::alias::*;
 use crate::SourceLocation;
 use crate::{proc::ConstantEvaluatorError, Span};
 use codespan_reporting::diagnostic::{Diagnostic, Label};

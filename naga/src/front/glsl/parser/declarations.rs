@@ -1,4 +1,5 @@
 use crate::{
+    alias::*,
     front::glsl::{
         ast::{
             GlobalLookup, GlobalLookupKind, Precision, QualifierKey, QualifierValue,

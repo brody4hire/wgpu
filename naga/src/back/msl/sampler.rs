@@ -1,3 +1,5 @@
+use crate::alias::*;
+
 #[cfg(feature = "deserialize")]
 use serde::Deserialize;
 #[cfg(feature = "serialize")]

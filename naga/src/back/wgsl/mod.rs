@@ -4,6 +4,8 @@ Backend for [WGSL][wgsl] (WebGPU Shading Language).
 [wgsl]: https://gpuweb.github.io/gpuweb/wgsl.html
 */
 
+use crate::alias::*;
+
 mod polyfill;
 mod writer;
 
