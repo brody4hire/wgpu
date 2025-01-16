@@ -2461,6 +2461,12 @@ pub(crate) mod alias {
         #[cfg(feature = "std")]
         pub(crate) use std::{backtrace, env, fs, io, path, process, thread, thread_local};
     }
+    // XXX TBD ??? ??? ???
+    #[cfg(feature = "arbitrary")]
+    pub(crate) use arbitrary;
+    // XXX TBD ??? ??? ???
+    #[cfg(feature = "arbitrary")]
+    pub(crate) use arbitrary::Arbitrary;
 }
 
 use alias::*;
