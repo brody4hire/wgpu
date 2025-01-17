@@ -303,6 +303,7 @@ pub(crate) mod aliases {
             borrow,
             boxed,
             format,
+            rc,
             string,
             vec,
         };

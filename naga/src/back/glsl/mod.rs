@@ -45,11 +45,15 @@ to output a [`Module`](crate::Module) into glsl
 
 pub use features::Features;
 
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::{
     back::{self, Baked},
     proc::{self, ExpressionKindTracker, NameKey},
     valid, Handle, ShaderStage, TypeInner,
 };
+
 use features::FeaturesManager;
 use std::{
     cmp::Ordering,

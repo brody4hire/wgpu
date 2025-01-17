@@ -1,4 +1,8 @@
 use super::PipelineConstants;
+
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::{
     arena::HandleVec,
     proc::{ConstantEvaluator, ConstantEvaluatorError, Emitter},
@@ -6,7 +10,9 @@ use crate::{
     Arena, Block, Constant, Expression, Function, Handle, Literal, Module, Override, Range, Scalar,
     Span, Statement, TypeInner, WithSpan,
 };
+
 use std::{borrow::Cow, collections::HashSet, mem};
+
 use thiserror::Error;
 
 #[derive(Error, Debug, Clone)]
