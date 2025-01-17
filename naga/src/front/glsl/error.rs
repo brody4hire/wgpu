@@ -1,6 +1,11 @@
 use super::token::TokenValue;
+
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::SourceLocation;
 use crate::{proc::ConstantEvaluatorError, Span};
+
 use codespan_reporting::diagnostic::{Diagnostic, Label};
 use codespan_reporting::files::SimpleFile;
 use codespan_reporting::term;

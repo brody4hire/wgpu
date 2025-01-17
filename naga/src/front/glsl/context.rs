@@ -7,11 +7,16 @@ use super::{
     types::{scalar_components, type_power},
     Frontend, Result,
 };
+
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::{
     front::Typifier, proc::Emitter, AddressSpace, Arena, BinaryOperator, Block, Expression,
     FastHashMap, FunctionArgument, Handle, Literal, LocalVariable, RelationalFunction, Scalar,
     Span, Statement, Type, TypeInner, VectorSize,
 };
+
 use std::ops::Index;
 
 /// The position at which an expression is, used while lowering

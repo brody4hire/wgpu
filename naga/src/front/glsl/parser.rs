@@ -9,7 +9,12 @@ use super::{
     variables::{GlobalOrConstant, VarDeclaration},
     Frontend, Result,
 };
+
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::{arena::Handle, proc::U32EvalError, Expression, Module, Span, Type};
+
 use pp_rs::token::{PreprocessorError, Token as PPToken, TokenValue as PPTokenValue};
 use std::iter::Peekable;
 

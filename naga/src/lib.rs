@@ -269,6 +269,8 @@ pub(crate) mod aliases {
                     borrow::ToOwned,
                     boxed::Box,
                     format,
+                    // XXX XXX - XXX NEEDED FOR TESTING ???
+                    println,
                     string::String,
                     string::ToString,
                     vec,
@@ -290,11 +292,13 @@ pub(crate) mod aliases {
             convert,
             fmt,
             hash,
+            // println,
             iter,
             marker,
             mem,
             num,
             ops,
+            result,
             slice,
         };
 
@@ -304,9 +308,13 @@ pub(crate) mod aliases {
             boxed,
             format,
             rc,
+            // println,
             string,
             vec,
         };
+
+        // XXX XXX - XXX NEEDED FOR TESTING ???
+        pub(crate) use crate::aliases::external::std::println;
 
         // XXX TODO XXX XXX XXX
         pub(crate) use super::external::std::collections;

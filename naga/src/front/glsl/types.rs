@@ -1,4 +1,8 @@
 use super::{context::Context, Error, ErrorKind, Result, Span};
+
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::{
     proc::ResolveContext, Expression, Handle, ImageClass, ImageDimension, Scalar, ScalarKind, Type,
     TypeInner, VectorSize,

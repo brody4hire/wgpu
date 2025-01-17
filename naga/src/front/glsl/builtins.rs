@@ -6,6 +6,10 @@ use super::{
     context::Context,
     Error, ErrorKind, Frontend, Result,
 };
+
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::{
     BinaryOperator, DerivativeAxis as Axis, DerivativeControl as Ctrl, Expression, Handle,
     ImageClass, ImageDimension as Dim, ImageQuery, MathFunction, Module, RelationalFunction,

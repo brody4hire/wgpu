@@ -5,7 +5,12 @@ use super::{
     token::TokenValue,
     Frontend, Options, Span,
 };
+
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::ShaderStage;
+
 use pp_rs::token::PreprocessorError;
 
 #[test]

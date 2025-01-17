@@ -1,3 +1,6 @@
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::front::glsl::context::ExprPos;
 use crate::front::glsl::Span;
 use crate::Literal;

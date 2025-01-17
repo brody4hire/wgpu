@@ -4,6 +4,10 @@ use super::{
     error::{Error, ErrorKind},
     Frontend, Result, Span,
 };
+
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::{
     AddressSpace, Binding, BuiltIn, Constant, Expression, GlobalVariable, Handle, Interpolation,
     LocalVariable, ResourceBinding, Scalar, ScalarKind, ShaderStage, SwizzleComponent, Type,

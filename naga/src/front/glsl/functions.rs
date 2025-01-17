@@ -6,11 +6,16 @@ use super::{
     types::scalar_components,
     Frontend, Result,
 };
+
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::{
     front::glsl::types::type_power, proc::ensure_block_returns, AddressSpace, Block, EntryPoint,
     Expression, Function, FunctionArgument, FunctionResult, Handle, Literal, LocalVariable, Scalar,
     ScalarKind, Span, Statement, StructMember, Type, TypeInner,
 };
+
 use std::iter;
 
 /// Struct detailing a store operation that must happen after a function call

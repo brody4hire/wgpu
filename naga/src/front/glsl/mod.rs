@@ -12,11 +12,17 @@ To begin, take a look at the documentation for the [`Frontend`].
 [glsl]: https://www.khronos.org/registry/OpenGL/index_gl.php
 */
 
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 pub use ast::{Precision, Profile};
 pub use error::{Error, ErrorKind, ExpectedToken, ParseErrors};
 pub use token::TokenValue;
 
+// XXX TODO MOVE THIS CRATE IMPORT UP:
 use crate::{proc::Layouter, FastHashMap, FastHashSet, Handle, Module, ShaderStage, Span, Type};
+
+// XXX TODO COMBINE WITH OTHER IMPORTS ABOVE
 use ast::{EntryArg, FunctionDeclaration, GlobalLookup};
 use parser::ParsingContext;
 

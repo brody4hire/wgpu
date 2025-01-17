@@ -3,7 +3,12 @@ use super::{
     token::{Directive, DirectiveKind, Token, TokenValue},
     types::parse_type,
 };
+
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::{FastHashMap, Span, StorageAccess};
+
 use pp_rs::{
     pp::Preprocessor,
     token::{PreprocessorError, Punct, TokenValue as PPTokenValue},
@@ -206,6 +211,11 @@ mod tests {
         super::token::{Directive, DirectiveKind, Token, TokenValue},
         Lexer, LexerResult, LexerResultKind,
     };
+
+    // XXX TBD ??? ???
+    #[cfg(not(feature = "std"))]
+    use crate::aliases::*;
+
     use crate::Span;
 
     #[test]

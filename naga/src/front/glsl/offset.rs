@@ -16,6 +16,10 @@ use super::{
     error::{Error, ErrorKind},
     Span,
 };
+
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::{proc::Alignment, Handle, Scalar, Type, TypeInner, UniqueArena};
 
 /// Struct with information needed for defining a struct member.

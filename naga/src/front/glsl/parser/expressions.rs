@@ -1,5 +1,8 @@
 use std::num::NonZeroU32;
 
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::{
     front::glsl::{
         ast::{FunctionCall, FunctionCallKind, HirExpr, HirExprKind},
