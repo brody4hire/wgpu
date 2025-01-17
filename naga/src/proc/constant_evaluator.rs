@@ -1,3 +1,8 @@
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
+// XXX TBD MOVE IMPORTS ???
+
 use std::iter;
 
 use arrayvec::ArrayVec;

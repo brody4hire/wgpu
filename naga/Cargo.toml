@@ -25,7 +25,10 @@ path = "tests/root.rs"
 all-features = true
 
 [features]
+# XXX TODO enable std by default
+# XXX TODO VERIFY which features may or may not require std
 default = []
+std = []
 dot-out = []
 glsl-in = ["dep:pp-rs"]
 glsl-out = []
