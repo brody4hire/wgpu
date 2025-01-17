@@ -1,4 +1,8 @@
 use super::{sampler as sm, Error, LocationMode, Options, PipelineOptions, TranslationInfo};
+
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::{
     arena::{Handle, HandleSet},
     back::{self, Baked},
@@ -6,6 +10,7 @@ use crate::{
     proc::{self, NameKey, TypeResolution},
     valid, FastHashMap, FastHashSet,
 };
+
 #[cfg(test)]
 use std::ptr;
 use std::{

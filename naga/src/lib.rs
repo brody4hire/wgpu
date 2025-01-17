@@ -298,6 +298,7 @@ pub(crate) mod aliases {
             mem,
             num,
             ops,
+            ptr,
             result,
             slice,
         };
