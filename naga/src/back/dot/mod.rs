@@ -7,6 +7,9 @@ of IR inspection and debugging.
 [dot]: https://graphviz.org/doc/info/lang.html
 */
 
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::{
     arena::Handle,
     valid::{FunctionInfo, ModuleInfo},
