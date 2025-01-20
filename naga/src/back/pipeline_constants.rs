@@ -1,4 +1,13 @@
 use super::PipelineConstants;
+
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
+// XXX TBD ??? ??? - IGNORING unused_imports warning HERE - XXX TBD COMBINE WITH ALIASES ???
+#[allow(unused_imports)]
+#[cfg(not(feature = "std"))]
+use num_traits::real::*;
+
 use crate::{
     arena::HandleVec,
     proc::{ConstantEvaluator, ConstantEvaluatorError, Emitter},
@@ -6,7 +15,9 @@ use crate::{
     Arena, Block, Constant, Expression, Function, Handle, Literal, Module, Override, Range, Scalar,
     Span, Statement, TypeInner, WithSpan,
 };
+
 use std::{borrow::Cow, collections::HashSet, mem};
+
 use thiserror::Error;
 
 #[derive(Error, Debug, Clone)]

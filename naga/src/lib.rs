@@ -264,6 +264,7 @@ pub(crate) mod aliases {
             pub(crate) mod v1 {
                 pub(crate) use crate::aliases::std::{
                     // XXX XXX TBD COMBINE LINES ???
+                    borrow::ToOwned,
                     boxed::Box,
                     format,
                     string::String,
@@ -294,12 +295,16 @@ pub(crate) mod aliases {
             borrow,
             boxed,
             format,
+            rc,
             string,
             vec,
         };
 
-        // XXX TODO REMOVE THIS HACK IN FAVOR OF UPDATE FROM OTHER PR: https://github.com/gfx-rs/wgpu/pull/6938
-        pub(crate) use hashbrown as collections;
+        pub(crate) mod collections {
+            pub(crate) use crate::aliases::external::alloc::collections::*;
+            // XXX TODO REMOVE IN FAVOR OF UPDATE FROM OTHER PR: https://github.com/gfx-rs/wgpu/pull/6938
+            pub(crate) use hashbrown::*;
+        }
 
         // XXX TBD POSSIBLE IMPACT ON CORE MSRV with no-std - ???
         pub(crate) use core::error;
