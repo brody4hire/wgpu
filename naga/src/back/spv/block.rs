@@ -6,7 +6,12 @@ use super::{
     index::BoundsCheckResult, selection::Selection, Block, BlockContext, Dimension, Error,
     Instruction, LocalType, LookupType, NumericType, ResultMember, Writer, WriterFlags,
 };
+
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::{arena::Handle, proc::index::GuardedIndex, Statement};
+
 use spirv::Word;
 
 fn get_dimension(type_inner: &crate::TypeInner) -> Dimension {

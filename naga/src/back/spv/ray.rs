@@ -6,6 +6,10 @@ use super::{
     Block, BlockContext, Function, FunctionArgument, Instruction, LocalType, LookupFunctionType,
     LookupType, NumericType, Writer,
 };
+
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::arena::Handle;
 use crate::{Type, TypeInner};
 

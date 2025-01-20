@@ -2,6 +2,9 @@
 Reusing collections' previous allocations.
 */
 
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 /// A value that can be reset to its initial state, retaining its current allocations.
 ///
 /// Naga attempts to lower the cost of SPIR-V generation by allowing clients to

@@ -7,6 +7,10 @@ use super::{
     selection::Selection,
     Block, BlockContext, Error, IdGenerator, Instruction, Word,
 };
+
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::{
     arena::Handle,
     proc::{index::GuardedIndex, BoundsCheckPolicy},

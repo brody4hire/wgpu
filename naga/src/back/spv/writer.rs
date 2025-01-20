@@ -6,12 +6,17 @@ use super::{
     LogicalLayout, LookupFunctionType, LookupType, NumericType, Options, PhysicalLayout,
     PipelineOptions, ResultMember, Writer, WriterFlags, BITS_PER_BYTE,
 };
+
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::{
     arena::{Handle, HandleVec, UniqueArena},
     back::spv::BindingInfo,
     proc::{Alignment, TypeResolution},
     valid::{FunctionInfo, ModuleInfo},
 };
+
 use spirv::Word;
 use std::collections::hash_map::Entry;
 
@@ -167,7 +172,11 @@ impl Writer {
                 let selected = match self.capabilities_available {
                     None => first,
                     Some(ref available) => {
-                        match capabilities.iter().find(|cap| available.contains(cap)) {
+                        // XXX UPDATE SHOULD COME FROM OTHER PR: https://github.com/gfx-rs/wgpu/pull/6938
+                        match capabilities
+                            .iter()
+                            .find(|cap| available.contains::<spirv::Capability>(cap))
+                        {
                             Some(&cap) => cap,
                             None => {
                                 return Err(Error::MissingCapabilities(what, capabilities.to_vec()))
@@ -1936,7 +1945,11 @@ impl Writer {
             if let Some(debug_info) = debug_info.as_ref() {
                 let source_file_id = self.id_gen.next();
                 self.debugs.push(Instruction::string(
+                    // XXX TODO FIX for no-std
+                    #[cfg(feature = "std")]
                     &debug_info.file_name.display().to_string(),
+                    #[cfg(not(feature = "std"))]
+                    "??",
                     source_file_id,
                 ));
 

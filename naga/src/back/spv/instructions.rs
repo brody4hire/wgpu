@@ -1,4 +1,8 @@
 use super::{block::DebugInfoInner, helpers};
+
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use spirv::{Op, Word};
 
 pub(super) enum Signedness {

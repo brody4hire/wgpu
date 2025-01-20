@@ -280,6 +280,7 @@ pub(crate) mod aliases {
         pub(crate) use core::{
             // XXX XXX TBD COMBINE LINES ???
             any,
+            array,
             cmp,
             convert,
             fmt,

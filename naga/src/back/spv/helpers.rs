@@ -1,4 +1,8 @@
 use crate::{Handle, UniqueArena};
+
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use spirv::Word;
 
 pub(super) fn bytes_to_words(bytes: &[u8]) -> Vec<Word> {
