@@ -66,7 +66,13 @@ deserialize = [
 arbitrary = ["dep:arbitrary", "bitflags/arbitrary", "indexmap/arbitrary"]
 spv-in = ["dep:petgraph", "dep:spirv"]
 spv-out = ["dep:spirv"]
-wgsl-in = ["dep:hexf-parse", "dep:unicode-xid", "compact"]
+wgsl-in = [
+    # XXX TBD OPTION TO GO BACK TO hexf-parse instead of hexfloat2 - ???
+    "dep:hexfloat2",
+    "dep:strum",
+    "dep:unicode-xid",
+    "compact",
+]
 wgsl-out = []
 
 ## Enables outputting to HLSL (Microsoft's High-Level Shader Language).
@@ -108,7 +114,9 @@ serde = { version = "1.0.217", features = [
 ], optional = true }
 petgraph = { version = "0.7", optional = true }
 pp-rs = { version = "0.2.1", optional = true }
-hexf-parse = { version = "0.2.1", optional = true }
+# XXX TBD OPTION TO GO BACK TO hexf-parse instead of hexfloat2 - ???
+# hexf-parse = { version = "0.2.1", optional = true }
+hexfloat2 = { version = "0.1", default-features = false, optional = true }
 unicode-xid = { version = "0.2.6", optional = true }
 
 [build-dependencies]

@@ -1,6 +1,8 @@
 use crate::front::wgsl::error::NumberError;
 use crate::front::wgsl::parse::lexer::Token;
 
+use hexfloat2;
+
 /// When using this type assume no Abstract Int/Float for now
 #[derive(Copy, Clone, Debug, PartialEq)]
 pub enum Number {
@@ -354,6 +356,7 @@ fn parse_dec(
 //   on overflow and inexact for hexadecimal floating point literals
 // (underflow is not mentioned)
 
+// XXX TODO FIX OR REMOVE THESE COMMENTS:
 // hexf_parse errors on overflow, underflow, inexact
 // rust std lib float from str handles overflow, underflow, inexact transparently (rounds and will not error)
 
@@ -362,18 +365,18 @@ fn parse_dec(
 // input format: 0[xX] ( [0-9a-fA-F]+\.[0-9a-fA-F]* | [0-9a-fA-F]*\.[0-9a-fA-F]+ ) [pP][+-]?[0-9]+
 fn parse_hex_float(input: &str, kind: Option<FloatKind>) -> Result<Number, NumberError> {
     match kind {
-        None => match hexf_parse::parse_hexf64(input, false) {
+        None => match hexfloat2::parse(input) {
             Ok(num) => Ok(Number::AbstractFloat(num)),
             // can only be ParseHexfErrorKind::Inexact but we can't check since it's private
             _ => Err(NumberError::NotRepresentable),
         },
         Some(FloatKind::F16) => Err(NumberError::UnimplementedF16),
-        Some(FloatKind::F32) => match hexf_parse::parse_hexf32(input, false) {
+        Some(FloatKind::F32) => match hexfloat2::parse(input) {
             Ok(num) => Ok(Number::F32(num)),
             // can only be ParseHexfErrorKind::Inexact but we can't check since it's private
             _ => Err(NumberError::NotRepresentable),
         },
-        Some(FloatKind::F64) => match hexf_parse::parse_hexf64(input, false) {
+        Some(FloatKind::F64) => match hexfloat2::parse(input) {
             Ok(num) => Ok(Number::F64(num)),
             // can only be ParseHexfErrorKind::Inexact but we can't check since it's private
             _ => Err(NumberError::NotRepresentable),
