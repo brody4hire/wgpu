@@ -305,8 +305,10 @@ jobs:
 
           # Check wgpu-types with all features except "std".
           cargo clippy --target ${{ matrix.target }} ${{ matrix.extra-flags }} -p wgpu-types --no-default-features --features strict_asserts,fragile-send-sync-non-atomic-wasm,serde,counters
+          # Use hexfloat2 from GitHub - WORKAROUND NEEDED for unpublished no-std support - XXX TODO NEED TO FIND ANOTHER SOLUTION
+          cargo add hexfloat2 --git https://github.com/ericseppanen/hexfloat2 --no-default-features --optional -p naga
           # Check naga with all features possible for no-std.
-          cargo clippy --target ${{ matrix.target }} ${{ matrix.extra-flags }} -p naga --no-default-features --features dot-out,glsl-out,msl-out,spv-out
+          cargo clippy --target ${{ matrix.target }} ${{ matrix.extra-flags }} -p naga --no-default-features --features dot-out,glsl-out,msl-out,spv-out,wgsl-in
 
       # Building for native platforms with standard tests.
       - name: check native

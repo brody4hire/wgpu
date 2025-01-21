@@ -1,3 +1,6 @@
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use super::arena::HandleSet;
 use super::{FunctionMap, ModuleMap};
 

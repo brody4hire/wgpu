@@ -11,6 +11,8 @@ pub struct ShaderError<E> {
     pub inner: Box<E>,
 }
 
+// XXX TODO FIX for no-std
+#[cfg(feature = "std")]
 #[cfg(feature = "wgsl-in")]
 impl fmt::Display for ShaderError<crate::front::wgsl::ParseError> {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {

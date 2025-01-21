@@ -84,6 +84,7 @@ impl<T> UniqueArena<T> {
     }
 }
 
+#[allow(unused_qualifications)] // XXX TBD ???
 #[cfg(feature = "compact")]
 pub struct UniqueArenaDrain<'a, T> {
     inner_elts: indexmap::set::Drain<'a, T>,

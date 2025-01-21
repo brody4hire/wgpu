@@ -116,6 +116,7 @@ petgraph = { version = "0.7", optional = true }
 pp-rs = { version = "0.2.1", optional = true }
 # XXX TBD OPTION TO GO BACK TO hexf-parse instead of hexfloat2 - ???
 # hexf-parse = { version = "0.2.1", optional = true }
+# XXX TODO NEED UNPUBLISHED hexfloat2 update to support no-std
 hexfloat2 = { version = "0.1", default-features = false, optional = true }
 unicode-xid = { version = "0.2.6", optional = true }
 

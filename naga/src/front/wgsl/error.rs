@@ -1,3 +1,6 @@
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::diagnostic_filter::ConflictingDiagnosticRuleError;
 use crate::front::wgsl::parse::directive::enable_extension::{
     EnableExtension, UnimplementedEnableExtension,
@@ -9,11 +12,18 @@ use crate::front::wgsl::parse::lexer::Token;
 use crate::front::wgsl::Scalar;
 use crate::proc::{Alignment, ConstantEvaluatorError, ResolveError};
 use crate::{SourceLocation, Span};
-use codespan_reporting::diagnostic::{Diagnostic, Label};
-use codespan_reporting::files::SimpleFile;
-use codespan_reporting::term;
+
+#[cfg(feature = "std")]
+use codespan_reporting::{
+    diagnostic::{Diagnostic, Label},
+    files::SimpleFile,
+    term,
+};
+
 use std::borrow::Cow;
 use std::ops::Range;
+
+#[cfg(feature = "std")]
 use termcolor::{ColorChoice, NoColor, StandardStream};
 use thiserror::Error;
 
@@ -39,6 +49,7 @@ impl ParseError {
         &self.message
     }
 
+    #[cfg(feature = "std")]
     fn diagnostic(&self) -> Diagnostic<()> {
         let diagnostic = Diagnostic::error()
             .with_message(self.message.to_string())
@@ -60,11 +71,13 @@ impl ParseError {
         diagnostic
     }
 
+    #[cfg(feature = "std")]
     /// Emits a summary of the error to standard error stream.
     pub fn emit_to_stderr(&self, source: &str) {
         self.emit_to_stderr_with_path(source, "wgsl")
     }
 
+    #[cfg(feature = "std")]
     /// Emits a summary of the error to standard error stream.
     pub fn emit_to_stderr_with_path<P>(&self, source: &str, path: P)
     where
@@ -78,11 +91,13 @@ impl ParseError {
             .expect("cannot write error");
     }
 
+    #[cfg(feature = "std")]
     /// Emits a summary of the error to a string.
     pub fn emit_to_string(&self, source: &str) -> String {
         self.emit_to_string_with_path(source, "wgsl")
     }
 
+    #[cfg(feature = "std")]
     /// Emits a summary of the error to a string.
     pub fn emit_to_string_with_path<P>(&self, source: &str, path: P) -> String
     where
@@ -157,6 +172,7 @@ pub enum InvalidAssignmentType {
     ImmutableBinding(Span),
 }
 
+#[allow(dead_code)] // XXX TBD ???
 #[derive(Clone, Debug)]
 pub(crate) enum Error<'a> {
     Unexpected(Span, ExpectedToken<'a>),

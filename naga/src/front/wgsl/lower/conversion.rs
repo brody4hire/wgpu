@@ -1,5 +1,8 @@
 //! WGSL's automatic conversions for abstract types.
 
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::front::wgsl::error::{
     AutoConversionError, AutoConversionLeafScalarError, ConcretizationFailedError,
 };
