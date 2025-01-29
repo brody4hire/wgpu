@@ -16,9 +16,8 @@ use crate::{
     proc::{Alignment, TypeResolution},
     valid::{FunctionInfo, ModuleInfo},
 };
-
+use hashbrown::hash_map::Entry;
 use spirv::Word;
-use std::collections::hash_map::Entry;
 
 struct FunctionInterface<'a> {
     varying_ids: &'a mut Vec<Word>,
@@ -172,9 +171,9 @@ impl Writer {
                 let selected = match self.capabilities_available {
                     None => first,
                     Some(ref available) => {
-                        // XXX UPDATE SHOULD COME FROM OTHER PR: https://github.com/gfx-rs/wgpu/pull/6938
                         match capabilities
                             .iter()
+                            // need explicit type for hashbrown::HashSet::contains fn call to keep rustc happy
                             .find(|cap| available.contains::<spirv::Capability>(cap))
                         {
                             Some(&cap) => cap,
