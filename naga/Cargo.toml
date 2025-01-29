@@ -38,9 +38,6 @@ std = [
     "strum/std",
 ]
 
-# XXX TODO MANY FEATURES BELOW REQUIRE std feature to build - NEED TO SPECIFY THIS as needed
-# XXX TODO DETERMINE which features may or may not be able to work with no-std
-
 dot-out = []
 glsl-in = ["std", "dep:pp-rs"]
 glsl-out = []
