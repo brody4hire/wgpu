@@ -1,10 +1,15 @@
 use super::Error;
+
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::back::wgsl::polyfill::InversePolyfill;
 use crate::{
     back::{self, Baked},
     proc::{self, ExpressionKindTracker, NameKey},
     valid, Handle, Module, ShaderStage, TypeInner,
 };
+
 use std::fmt::Write;
 
 /// Shorthand result used internally by the backend

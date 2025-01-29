@@ -298,7 +298,7 @@ jobs:
           # Check wgpu-types with all features except "std".
           cargo clippy --target ${{ matrix.target }} ${{ matrix.extra-flags }} -p wgpu-types --no-default-features --features strict_asserts,fragile-send-sync-non-atomic-wasm,serde,counters
           # Check naga with all features possible for no-std.
-          cargo clippy --target ${{ matrix.target }} ${{ matrix.extra-flags }} -p naga --no-default-features --features dot-out,glsl-out,msl-out,spv-out
+          cargo clippy --target ${{ matrix.target }} ${{ matrix.extra-flags }} -p naga --no-default-features --features dot-out,glsl-out,msl-out,spv-out,wgsl-out
 
       # Building for native platforms with standard tests.
       - name: check native
