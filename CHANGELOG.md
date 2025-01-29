@@ -53,7 +53,6 @@ Bottom level categories:
 - Use `hashbrown` to simplify no-std support. By Brody in [#6938](https://github.com/gfx-rs/wgpu/pull/6938) & [#6925](https://github.com/gfx-rs/wgpu/pull/6925).
 - If you use Binding Arrays in a bind group, you may not use Dynamic Offset Buffers or Uniform Buffers in that bind group. By @cwfitzgerald in [#6811](https://github.com/gfx-rs/wgpu/pull/6811)
 
-
 ##### Refactored internal trace path parameter
 
 Refactored some functions to handle the internal trace path as a string to avoid possible issues with `no_std` support.
