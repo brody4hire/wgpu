@@ -300,7 +300,7 @@ jobs:
           # Use hexfloat2 from GitHub - WORKAROUND NEEDED for unpublished no-std support - XXX TODO NEED TO FIND ANOTHER SOLUTION
           cargo add hexfloat2 --git https://github.com/ericseppanen/hexfloat2 --no-default-features --optional -p naga
           # Check naga with all features possible for no-std.
-          cargo clippy --target ${{ matrix.target }} ${{ matrix.extra-flags }} -p naga --no-default-features --features dot-out,glsl-out,msl-out,spv-out,wgsl-in
+          cargo clippy --target ${{ matrix.target }} ${{ matrix.extra-flags }} -p naga --no-default-features --features dot-out,glsl-out,msl-out,spv-out,wgsl-in,wgsl-out,hlsl-out
 
       # Building for native platforms with standard tests.
       - name: check native

@@ -1,5 +1,10 @@
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::back::hlsl::BackendResult;
+
 use crate::{RayQueryIntersection, TypeInner};
+
 use std::fmt::Write;
 
 impl<W: Write> super::Writer<'_, W> {

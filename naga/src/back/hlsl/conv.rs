@@ -1,5 +1,8 @@
 use std::borrow::Cow;
 
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::proc::Alignment;
 
 use super::Error;

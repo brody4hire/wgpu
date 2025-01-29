@@ -38,9 +38,6 @@ std = [
     "strum/std",
 ]
 
-# XXX TODO MANY FEATURES BELOW REQUIRE std feature to build - NEED TO SPECIFY THIS as needed
-# XXX TODO DETERMINE which features may or may not be able to work with no-std
-
 dot-out = []
 glsl-in = ["std", "dep:pp-rs"]
 glsl-out = []
@@ -66,6 +63,7 @@ deserialize = [
 arbitrary = ["dep:arbitrary", "bitflags/arbitrary", "indexmap/arbitrary"]
 spv-in = ["dep:petgraph", "dep:spirv"]
 spv-out = ["dep:spirv"]
+
 wgsl-in = [
     # XXX TBD OPTION TO GO BACK TO hexf-parse instead of hexfloat2 - ???
     "dep:hexfloat2",
