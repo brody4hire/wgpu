@@ -692,6 +692,9 @@ jobs:
           rustup override set ${{ env.REPO_MSRV }}
           cargo -V
 
+      - name: Install markdownlint-cli2
+        run: npm i -g markdownlint-cli2
+
       - name: Run `cargo fmt`
         run: |
           cargo fmt -- --check
@@ -708,6 +711,9 @@ jobs:
 
       - name: Check for typos
         uses: crate-ci/typos@v1.29.4
+
+      - name: Check Markdown formatting
+        run: markdownlint-cli2 **/*.md
 
   check-cts-runner:
     # runtime is normally 2 minutes
