@@ -75,7 +75,8 @@ wgpu-types = { version = "24.0.0", path = "./wgpu-types" }
 anyhow = { version = "1.0.95", default-features = false }
 approx = "0.5"
 argh = "0.1.13"
-arrayvec = "0.7"
+# XXX TODO update arrayvec version -> 0.7.6
+arrayvec = { version = "0.7", default-features = false }
 bincode = "1"
 bit-vec = "0.8"
 bitflags = "2.7"
