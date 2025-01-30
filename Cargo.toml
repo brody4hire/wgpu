@@ -72,7 +72,7 @@ wgpu-macros = { version = "24.0.0", path = "./wgpu-macros" }
 wgpu-test = { version = "24.0.0", path = "./tests" }
 wgpu-types = { version = "24.0.0", path = "./wgpu-types" }
 
-anyhow = "1.0.95"
+anyhow = { version = "1.0.95", default-features = false }
 argh = "0.1.13"
 arrayvec = "0.7"
 approx = "0.5"
