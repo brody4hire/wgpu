@@ -4,7 +4,7 @@ use crate::aliases::*;
 // XXX TBD ??? ??? - IGNORING unused_imports warning HERE - XXX TBD COMBINE WITH ALIASES ???
 #[allow(unused_imports)]
 #[cfg(not(feature = "std"))]
-use num_traits::real::*;
+use num_traits::float::Float as OtherFloat;
 
 // XXX TBD MOVE IMPORTS ???
 
@@ -1193,7 +1193,6 @@ impl<'a> ConstantEvaluator<'a> {
                 // <https://github.com/rust-lang/rust/issues/96710>.
                 //
                 // [polyfill source]: https://github.com/imeka/ndarray-ndimage/blob/8b14b4d6ecfbc96a8a052f802e342a7049c68d8f/src/lib.rs#L98
-                // XXX TODO NEED copysign for f64 & no-std
                 fn round_ties_even(x: f64) -> f64 {
                     let i = x as i64;
                     let f = (x - i as f64).abs();
