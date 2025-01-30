@@ -135,7 +135,7 @@ serde_json = "1.0.137"
 serde = { version = "1", default-features = false }
 smallvec = "1"
 static_assertions = "1.1.0"
-strum = { version = "0.26.0", features = ["derive"] }
+strum = { version = "0.26.0", default-features = false, features = ["derive"] }
 trybuild = "1"
 tracy-client = "0.17"
 thiserror = "2"
