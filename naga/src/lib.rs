@@ -249,6 +249,60 @@ An override expression can be evaluated at pipeline creation time.
         clippy::todo
     )
 )]
+// XXX TODO ADD SOME COMMENTS FOR THIS:
+#![cfg_attr(not(feature = "std"), no_std)]
+
+// XXX TBD WHERE TO PUT THIS MOD - ??? - XXX TBD SEPARATE SOURCE FILE ???
+#[cfg(not(feature = "std"))]
+pub(crate) mod aliases {
+    pub(crate) mod external {
+        pub(crate) extern crate alloc;
+    }
+
+    pub(crate) mod std {
+        pub(crate) mod prelude {
+            pub(crate) mod v1 {
+                pub(crate) use crate::aliases::std::{
+                    // XXX XXX TBD COMBINE LINES ???
+                    boxed::Box,
+                    format,
+                    string::String,
+                    string::ToString,
+                    vec,
+                    vec::Vec,
+                };
+            }
+        }
+
+        pub(crate) use core::{
+            // XXX XXX TBD COMBINE LINES ???
+            any,
+            cmp,
+            convert,
+            fmt,
+            hash,
+            iter,
+            marker,
+            mem,
+            num,
+            ops,
+            slice,
+        };
+
+        pub(crate) use super::external::alloc::{
+            // XXX XXX TBD COMBINE LINES ???
+            borrow,
+            boxed,
+            format,
+            string,
+            vec,
+        };
+    }
+    pub(crate) use std::prelude::v1::*;
+}
+
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
 
 mod arena;
 pub mod back;

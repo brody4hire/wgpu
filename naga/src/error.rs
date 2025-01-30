@@ -1,4 +1,12 @@
-use std::{error::Error, fmt};
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
+#[cfg(feature = "std")]
+use std::error::Error;
+
+// XXX TODO ADD & IMPROVE NOTE: multiple features below only working with std at this point
+#[cfg(feature = "std")]
+use std::fmt;
 
 #[derive(Clone, Debug)]
 pub struct ShaderError<E> {
@@ -32,6 +40,8 @@ impl fmt::Display for ShaderError<crate::front::spv::Error> {
         write!(f, "\nShader '{label}' parsing {string}")
     }
 }
+// XXX TBD FIX for no-std ???
+#[cfg(feature = "std")]
 impl fmt::Display for ShaderError<crate::WithSpan<crate::valid::ValidationError>> {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         use codespan_reporting::{files::SimpleFile, term};
@@ -49,6 +59,9 @@ impl fmt::Display for ShaderError<crate::WithSpan<crate::valid::ValidationError>
         )
     }
 }
+
+// XXX TODO ADD NOTE WITH TODO: supporting core::error::Error would be a nice feature but may affect core MSRV
+#[cfg(feature = "std")]
 impl<E> Error for ShaderError<E>
 where
     ShaderError<E>: fmt::Display,

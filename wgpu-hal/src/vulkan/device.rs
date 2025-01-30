@@ -2,7 +2,6 @@ use super::{conv, RawTlasInstance};
 
 use arrayvec::ArrayVec;
 use ash::{khr, vk};
-use hashbrown::hash_map::Entry;
 use parking_lot::Mutex;
 
 use crate::TlasInstance;
@@ -15,6 +14,9 @@ use std::{
     ptr, slice,
     sync::Arc,
 };
+
+// XXX TODO MOVE THIS IMPORT NOW RESTORED:
+use hashbrown::hash_map::Entry;
 
 impl super::DeviceShared {
     /// Set the name of `object` to `name`.

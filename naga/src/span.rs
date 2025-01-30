@@ -1,5 +1,11 @@
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
 use crate::{Arena, Handle, UniqueArena};
-use std::{error::Error, fmt, ops::Range};
+
+#[cfg(feature = "std")]
+use std::error::Error;
+
+use std::{fmt, ops::Range};
 
 /// A source code span, used for error reporting.
 #[derive(Clone, Copy, Debug, PartialEq, Default)]
@@ -152,6 +158,8 @@ where
     }
 }
 
+// XXX TODO ADD NOTE WITH TODO: supporting core::error::Error would be a nice feature but may affect core MSRV
+#[cfg(feature = "std")]
 impl<E> Error for WithSpan<E>
 where
     E: Error,
@@ -239,6 +247,7 @@ impl<E> WithSpan<E> {
         Some(self.spans[0].0.location(source))
     }
 
+    #[cfg(feature = "std")]
     pub(crate) fn diagnostic(&self) -> codespan_reporting::diagnostic::Diagnostic<()>
     where
         E: Error,
@@ -266,6 +275,7 @@ impl<E> WithSpan<E> {
     }
 
     /// Emits a summary of the error to standard error stream.
+    #[cfg(feature = "std")]
     pub fn emit_to_stderr(&self, source: &str)
     where
         E: Error,
@@ -274,6 +284,7 @@ impl<E> WithSpan<E> {
     }
 
     /// Emits a summary of the error to standard error stream.
+    #[cfg(feature = "std")]
     pub fn emit_to_stderr_with_path(&self, source: &str, path: &str)
     where
         E: Error,
@@ -288,7 +299,9 @@ impl<E> WithSpan<E> {
             .expect("cannot write error");
     }
 
+    // XXX TBD FIX FOR no-std - ???
     /// Emits a summary of the error to a string.
+    #[cfg(feature = "std")]
     pub fn emit_to_string(&self, source: &str) -> String
     where
         E: Error,
@@ -297,6 +310,7 @@ impl<E> WithSpan<E> {
     }
 
     /// Emits a summary of the error to a string.
+    #[cfg(feature = "std")]
     pub fn emit_to_string_with_path(&self, source: &str, path: &str) -> String
     where
         E: Error,
