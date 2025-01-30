@@ -77,7 +77,7 @@ approx = "0.5"
 argh = "0.1.13"
 arrayvec = { version = "0.7.6", default-features = false }
 bincode = "1"
-bit-set = "0.8"
+bit-set = { version = "0.8", default-features = false }
 bit-vec = "0.8"
 bitflags = "2.7"
 bytemuck = { version = "1.21", features = ["derive", "min_const_generics"] }
