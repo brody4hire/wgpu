@@ -1,9 +1,14 @@
 use super::{BackendResult, Error, Version, Writer};
+
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::{
     back::glsl::{Options, WriterFlags},
     AddressSpace, Binding, Expression, Handle, ImageClass, ImageDimension, Interpolation,
     SampleLevel, Sampling, Scalar, ScalarKind, ShaderStage, StorageFormat, Type, TypeInner,
 };
+
 use std::fmt::Write;
 
 bitflags::bitflags! {

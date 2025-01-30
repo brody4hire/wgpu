@@ -25,9 +25,21 @@ path = "tests/root.rs"
 all-features = true
 
 [features]
-default = []
+default = ["std"]
+
+# XXX TBD ADD DESCRIPTION HERE (???)
+std = [
+    "dep:codespan-reporting",
+    # XXX TBD does strum need to be gated on std ???
+    "dep:strum",
+    "dep:termcolor",
+    "indexmap/std",
+    # XXX TBD IS / WHY IS THIS NEEDED ???
+    "strum/std",
+]
+
 dot-out = []
-glsl-in = ["dep:pp-rs"]
+glsl-in = ["std", "dep:pp-rs"]
 glsl-out = []
 
 ## Enables outputting to the Metal Shading Language (MSL).
@@ -51,7 +63,8 @@ deserialize = [
 arbitrary = ["dep:arbitrary", "bitflags/arbitrary", "indexmap/arbitrary"]
 spv-in = ["dep:petgraph", "dep:spirv"]
 spv-out = ["dep:spirv"]
-wgsl-in = ["dep:hexf-parse", "dep:unicode-xid", "compact"]
+
+wgsl-in = ["std", "dep:hexf-parse", "dep:unicode-xid", "compact"]
 wgsl-out = []
 
 ## Enables outputting to HLSL (Microsoft's High-Level Shader Language).
@@ -72,16 +85,19 @@ arbitrary = { version = "1.4", features = ["derive"], optional = true }
 arrayvec.workspace = true
 bitflags.workspace = true
 bit-set.workspace = true
-termcolor = { version = "1.4.1" }
-# remove termcolor dep when updating to the next version of codespan-reporting
+# remove termcolor from here when updating to the next version of codespan-reporting
 # termcolor minimum version was wrong and was fixed in
 # https://github.com/brendanzab/codespan/commit/e99c867339a877731437e7ee6a903a3d03b5439e
-codespan-reporting = { version = "0.11.0" }
+termcolor = { version = "1.4.1", optional = true }
+codespan-reporting = { version = "0.11.0", optional = true }
 hashbrown.workspace = true
 rustc-hash.workspace = true
 indexmap.workspace = true
 log = "0.4"
-strum.workspace = true
+num-traits = { version = "0.2.19", default-features = false, features = [
+    "libm",
+] }
+strum = { workspace = true, optional = true }
 spirv = { version = "0.3", optional = true }
 thiserror.workspace = true
 serde = { version = "1.0.217", features = [

@@ -1,4 +1,8 @@
 use super::{Instruction, LogicalLayout, PhysicalLayout};
+
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use spirv::{Op, Word, MAGIC_NUMBER};
 use std::iter;
 

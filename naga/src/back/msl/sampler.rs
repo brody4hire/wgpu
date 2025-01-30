@@ -1,7 +1,11 @@
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 #[cfg(feature = "deserialize")]
 use serde::Deserialize;
 #[cfg(feature = "serialize")]
 use serde::Serialize;
+
 use std::{num::NonZeroU32, ops::Range};
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]

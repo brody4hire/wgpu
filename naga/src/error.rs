@@ -1,3 +1,6 @@
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use std::{error::Error, fmt};
 
 #[derive(Clone, Debug)]
@@ -32,6 +35,8 @@ impl fmt::Display for ShaderError<crate::front::spv::Error> {
         write!(f, "\nShader '{label}' parsing {string}")
     }
 }
+// XXX TBD FIX for no-std ???
+#[cfg(feature = "std")]
 impl fmt::Display for ShaderError<crate::WithSpan<crate::valid::ValidationError>> {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         use codespan_reporting::{files::SimpleFile, term};

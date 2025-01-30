@@ -31,7 +31,11 @@ holding the result.
 
 */
 
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::{arena::Handle, proc::index, valid::ModuleInfo};
+
 use std::fmt::{Error as FmtError, Write};
 
 mod keywords;

@@ -18,6 +18,9 @@ mod writer;
 
 pub use spirv::{Capability, SourceLanguage};
 
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::arena::{Handle, HandleVec};
 use crate::proc::{BoundsCheckPolicies, TypeResolution};
 
@@ -88,6 +91,8 @@ impl IdGenerator {
 #[derive(Debug, Clone)]
 pub struct DebugInfo<'a> {
     pub source_code: &'a str,
+    // XXX TODO FIX for no-std
+    #[cfg(feature = "std")]
     pub file_name: &'a std::path::Path,
     pub language: SourceLanguage,
 }

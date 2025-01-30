@@ -1,3 +1,13 @@
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
+// XXX TBD ??? ??? - IGNORING unused_imports warning HERE - XXX TBD COMBINE WITH ALIASES ???
+#[allow(unused_imports)]
+#[cfg(not(feature = "std"))]
+use num_traits::real::*;
+
+// XXX TBD MOVE IMPORTS ???
+
 use std::iter;
 
 use arrayvec::ArrayVec;
@@ -1189,12 +1199,23 @@ impl<'a> ConstantEvaluator<'a> {
                     if f == 0.5 {
                         if i & 1 == 1 {
                             // -1.5, 1.5, 3.5, ...
-                            (x.abs() + 0.5).copysign(x)
+                            with_sign(x.abs() + 0.5, x.is_sign_negative())
                         } else {
-                            (x.abs() - 0.5).copysign(x)
+                            with_sign(x.abs() - 0.5, x.is_sign_positive())
                         }
                     } else {
                         x.round()
+                    }
+                }
+                // Additional helper shamelessly adapted, based on:
+                // - https://github.com/rust-num/num-traits/blob/num-traits-0.2.19/src/float.rs#L1905
+                // (with compatible licensing as well)
+                #[inline]
+                fn with_sign(magnitude: f64, with_negative_sign: bool) -> f64 {
+                    if with_negative_sign {
+                        -magnitude.abs()
+                    } else {
+                        magnitude.abs()
                     }
                 }
                 component_wise_float(self, span, [arg], |e| match e {
@@ -2472,6 +2493,9 @@ impl TryFromAbstract<f64> for u64 {
 #[cfg(test)]
 mod tests {
     use std::vec;
+
+    #[cfg(not(feature = "std"))]
+    use crate::aliases::*;
 
     use crate::{
         Arena, Constant, Expression, Literal, ScalarKind, Type, TypeInner, UnaryOperator,

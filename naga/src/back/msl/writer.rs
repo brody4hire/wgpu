@@ -1,4 +1,13 @@
 use super::{sampler as sm, Error, LocationMode, Options, PipelineOptions, TranslationInfo};
+
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
+// XXX TBD ??? ??? - IGNORING unused_imports warning HERE - XXX TBD COMBINE WITH ALIASES ???
+#[allow(unused_imports)]
+#[cfg(not(feature = "std"))]
+use num_traits::real::*;
+
 use crate::{
     arena::{Handle, HandleSet},
     back::{self, Baked},
@@ -6,6 +15,7 @@ use crate::{
     proc::{self, NameKey, TypeResolution},
     valid, FastHashMap, FastHashSet,
 };
+
 #[cfg(test)]
 use std::ptr;
 use std::{

@@ -11,6 +11,9 @@ mod terminator;
 mod type_methods;
 mod typifier;
 
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 pub use constant_evaluator::{
     ConstantEvaluator, ConstantEvaluatorError, ExpressionKind, ExpressionKindTracker,
 };
