@@ -117,6 +117,9 @@ mod writer;
 use std::fmt::Error as FmtError;
 use thiserror::Error;
 
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::{back, proc};
 
 #[derive(Copy, Clone, Debug, Default, PartialEq, Eq, Hash)]

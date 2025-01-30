@@ -58,6 +58,10 @@ code in the selection's body, call the `Selection::block` method.
 */
 
 use super::{Block, BlockContext, Instruction};
+
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use spirv::Word;
 
 /// A private struct recording what we know about the selection construct so far.

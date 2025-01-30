@@ -59,7 +59,11 @@
 //! [`Switch`]: crate::Statement::Switch
 //! [`SwitchCase`]: crate::SwitchCase
 
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::proc::Namer;
+
 use std::rc::Rc;
 
 /// A summary of the code surrounding a statement.

@@ -1,5 +1,9 @@
 use super::functions::FunctionTracer;
 use super::FunctionMap;
+
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::arena::Handle;
 
 impl FunctionTracer<'_> {

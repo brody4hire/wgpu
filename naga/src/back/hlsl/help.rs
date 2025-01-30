@@ -31,7 +31,12 @@ use super::{
     writer::{EXTRACT_BITS_FUNCTION, INSERT_BITS_FUNCTION},
     BackendResult,
 };
+
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::{arena::Handle, proc::NameKey};
+
 use std::fmt::Write;
 
 #[derive(Clone, Copy, Debug, Hash, Eq, Ord, PartialEq, PartialOrd)]

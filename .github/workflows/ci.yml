@@ -52,6 +52,7 @@ env:
   RUST_LOG: debug
   RUST_BACKTRACE: full
   PKG_CONFIG_ALLOW_CROSS: 1 # allow android to work
+  # XXX TODO CONFIGURE THIS PER JOB - NOT ALL JOBS SHOULD FAIL WITH CARGO WARNINGS
   RUSTFLAGS: -D warnings
   RUSTDOCFLAGS: -D warnings
   WASM_BINDGEN_TEST_TIMEOUT: 300 # 5 minutes
@@ -175,6 +176,13 @@ jobs:
             tier: 2
             kind: no_std
 
+          # XXX TODO MOVE INTO SEPARATE CI JOB:
+          - name: no-std feature test - Linux x86_64
+            os: ubuntu-22.04
+            target: x86_64-unknown-linux-gnu
+            tier: 1
+            kind: no-std-feature-test
+
     name: Clippy ${{ matrix.name }}
     runs-on: ${{ matrix.os }}
 
@@ -282,11 +290,17 @@ jobs:
         run: |
           set -e
 
-          # check with no features
+          # Check wgpu-types with no features.
           cargo clippy --target ${{ matrix.target }} ${{ matrix.extra-flags }} -p wgpu-types --no-default-features
+          # Check naga with no features.
+          cargo clippy --target ${{ matrix.target }} ${{ matrix.extra-flags }} -p naga --no-default-features
 
-          # Check with all features except "std".
+          # Check wgpu-types with all features except "std".
           cargo clippy --target ${{ matrix.target }} ${{ matrix.extra-flags }} -p wgpu-types --no-default-features --features strict_asserts,fragile-send-sync-non-atomic-wasm,serde,counters
+          # Use hexfloat2 from GitHub - WORKAROUND NEEDED for unpublished no-std support - XXX TODO NEED TO FIND ANOTHER SOLUTION
+          cargo add hexfloat2 --git https://github.com/ericseppanen/hexfloat2 --no-default-features --optional -p naga
+          # Check naga with all features possible for no-std.
+          cargo clippy --target ${{ matrix.target }} ${{ matrix.extra-flags }} -p naga --no-default-features --features dot-out,glsl-out,msl-out,spv-out,wgsl-in,wgsl-out,hlsl-out
 
       # Building for native platforms with standard tests.
       - name: check native
@@ -303,6 +317,20 @@ jobs:
 
           # build docs
           cargo doc --target ${{ matrix.target }} ${{ matrix.extra-flags }} --all-features --no-deps
+
+      # XXX TODO MOVE INTO SEPARATE CI JOB - MAY SHOW UP AS A "Clippy" job in GitHub CI
+      - name: no-std feature test
+        if: matrix.kind == 'no-std-feature-test'
+        shell: bash
+        run: |
+          set -e
+
+          # no-std feature test with no features - naga
+          cargo test --target ${{ matrix.target }} ${{ matrix.extra-flags }} -p naga --no-default-features
+
+          # XXX TODO FIX & TEST MULTIPLE naga features for no-std
+          # no-std test with multiple features - naga
+          # cargo test [...]
 
       - name: check private item docs
         if: matrix.kind == 'native'

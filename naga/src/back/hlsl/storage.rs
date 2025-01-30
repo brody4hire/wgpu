@@ -56,6 +56,10 @@ correct type if necessary.
 */
 
 use super::{super::FunctionCtx, BackendResult, Error};
+
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::{
     proc::{Alignment, NameKey, TypeResolution},
     Handle,

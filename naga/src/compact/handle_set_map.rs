@@ -1,3 +1,6 @@
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::arena::{Arena, Handle, HandleSet, Range};
 
 type Index = crate::non_max_u32::NonMaxU32;

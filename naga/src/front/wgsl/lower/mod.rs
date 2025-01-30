@@ -1,5 +1,8 @@
 use std::num::NonZeroU32;
 
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::front::wgsl::error::{Error, ExpectedToken, InvalidAssignmentType};
 use crate::front::wgsl::index::Index;
 use crate::front::wgsl::parse::number::Number;

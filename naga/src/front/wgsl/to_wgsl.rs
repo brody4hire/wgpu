@@ -1,5 +1,8 @@
 //! Producing the WGSL forms of types, for use in error messages.
 
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::proc::GlobalCtx;
 use crate::Handle;
 

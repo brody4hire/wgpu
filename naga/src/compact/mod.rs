@@ -4,8 +4,12 @@ mod handle_set_map;
 mod statements;
 mod types;
 
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::arena::HandleSet;
 use crate::{arena, compact::functions::FunctionTracer};
+
 use handle_set_map::HandleMap;
 
 /// Remove unused types, expressions, and constants from `module`.

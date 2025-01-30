@@ -1,16 +1,25 @@
 //! [`DiagnosticFilter`]s and supporting functionality.
 
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 #[cfg(feature = "wgsl-in")]
 use crate::Span;
 use crate::{Arena, Handle};
 #[cfg(feature = "arbitrary")]
 use arbitrary::Arbitrary;
+#[cfg(feature = "std")] // XXX TBD QUICK WORKAROUND - XXX TODO REPLACE WITH CLEANER SOLUTION
 #[cfg(feature = "wgsl-in")]
 use indexmap::IndexMap;
 #[cfg(feature = "deserialize")]
 use serde::Deserialize;
 #[cfg(feature = "serialize")]
 use serde::Serialize;
+
+// XXX TBD QUICK WORKAROUND - XXX TODO REPLACE WITH CLEANER SOLUTION
+#[cfg(not(feature = "std"))]
+#[cfg(feature = "wgsl-in")]
+use crate::FastIndexMap as IndexMap;
 
 /// A severity set on a [`DiagnosticFilter`].
 ///

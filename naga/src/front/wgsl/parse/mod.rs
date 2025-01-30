@@ -1,3 +1,6 @@
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::diagnostic_filter::{
     self, DiagnosticFilter, DiagnosticFilterMap, DiagnosticFilterNode, FilterableTriggeringRule,
     ShouldConflictOnFullDuplicate, StandardFilterableTriggeringRule,
@@ -2876,12 +2879,15 @@ impl Parser {
             FilterableTriggeringRule::User(Box::new([diagnostic_name_token.into(), ident.into()]))
         } else {
             let diagnostic_rule_name = diagnostic_name_token;
+            #[allow(unused_variables)] // XXX TBD ???
             let diagnostic_rule_name_span = diagnostic_name_token_span;
             if let Some(triggering_rule) =
                 StandardFilterableTriggeringRule::from_wgsl_ident(diagnostic_rule_name)
             {
                 FilterableTriggeringRule::Standard(triggering_rule)
             } else {
+                // XXX TBD FIX for no-std - ???
+                #[cfg(feature = "std")]
                 diagnostic_filter::Severity::Warning.report_wgsl_parse_diag(
                     Error::UnknownDiagnosticRuleName(diagnostic_rule_name_span),
                     lexer.source,

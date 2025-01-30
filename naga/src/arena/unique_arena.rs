@@ -1,5 +1,8 @@
 //! The [`UniqueArena`] type and supporting definitions.
 
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::{FastIndexSet, Span};
 
 use super::handle::{BadHandle, Handle, Index};
@@ -81,6 +84,7 @@ impl<T> UniqueArena<T> {
     }
 }
 
+#[allow(unused_qualifications)] // XXX TBD ???
 #[cfg(feature = "compact")]
 pub struct UniqueArenaDrain<'a, T> {
     inner_elts: indexmap::set::Drain<'a, T>,

@@ -33,6 +33,7 @@ impl DirectiveKind {
     }
 }
 
+#[cfg(feature = "std")]
 impl crate::diagnostic_filter::Severity {
     #[cfg(feature = "wgsl-in")]
     pub(crate) fn report_wgsl_parse_diag<'a>(

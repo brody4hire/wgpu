@@ -1,5 +1,8 @@
 use std::num::NonZeroU32;
 
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::front::wgsl::parse::ast;
 use crate::{Handle, Span};
 

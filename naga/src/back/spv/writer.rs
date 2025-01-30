@@ -6,6 +6,10 @@ use super::{
     LogicalLayout, LookupFunctionType, LookupType, NumericType, Options, PhysicalLayout,
     PipelineOptions, ResultMember, Writer, WriterFlags, BITS_PER_BYTE,
 };
+
+#[cfg(not(feature = "std"))]
+use crate::aliases::*;
+
 use crate::{
     arena::{Handle, HandleVec, UniqueArena},
     back::spv::BindingInfo,
@@ -1940,7 +1944,11 @@ impl Writer {
             if let Some(debug_info) = debug_info.as_ref() {
                 let source_file_id = self.id_gen.next();
                 self.debugs.push(Instruction::string(
+                    // XXX TODO FIX for no-std
+                    #[cfg(feature = "std")]
                     &debug_info.file_name.display().to_string(),
+                    #[cfg(not(feature = "std"))]
+                    "??",
                     source_file_id,
                 ));
 
